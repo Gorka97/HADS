@@ -10,11 +10,11 @@
 <body>
     <form id="form1" runat="server">
         <asp:Label ID="Label1" runat="server" Text="E-mail" style="margin-right: 70px"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBoxEmail" runat="server"></asp:TextBox>
         <br />
         <br />    
         <asp:Label ID="Label2" runat="server" Text="Password" style="margin-right: 50px"></asp:Label>
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBoxPass" runat="server" TextMode="Password"></asp:TextBox>
         <br />
         <br />
         <asp:Button ID="Button1" runat="server" Text="Acceder" style="margin-left: 90px" />

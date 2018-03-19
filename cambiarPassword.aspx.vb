@@ -27,15 +27,18 @@ Public Class WebForm2
         Dim cod As String = RS.Item("numconfir")
         RS.Close()
 
-        Dim email = TextBoxEmail.Text
-        Dim envio As New BaseDeDatos.Email
-        Dim bool = envio.EnviarEmailModificar(cod, email)
-        If bool Then
-            LabelEspera.Text = "En breves instantes recibira un email con su codigo de verificacion"
+        If ToString.IsNullOrEmpty(TextBoxEmail.Text) Then
+            LabelEspera.Text = "Introduzca un email"
         Else
-            LabelEspera.Text = "Se ha producido un error, intentelo mas tarde"
+            Dim email = TextBoxEmail.Text
+            Dim envio As New BaseDeDatos.Email
+            Dim bool = envio.EnviarEmailModificar(cod, email)
+            If bool Then
+                LabelEspera.Text = "En breves instantes recibira un email con su codigo de verificacion"
+            Else
+                LabelEspera.Text = "Se ha producido un error, intentelo mas tarde"
+            End If
         End If
-
     End Sub
 
     Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -51,21 +54,25 @@ Public Class WebForm2
         RS.Read()
         Dim cod As String = RS.Item("numconfir")
         RS.Close()
-        If TextBoxCodigo.Text.Equals(cod) Then
-            If TextBoxPass.Text.Equals(TextBoxPass2.Text) Then
-                Dim st2 = "UPDATE Usuarios SET pass = '" & TextBoxPass.Text & "' WHERE email = '" & TextBoxEmail.Text & "'"
-                Dim bool = updateDatos(st2)
-                If (bool) Then
-                    Response.Redirect("http://hads18-24.azurewebsites.net/inicio.aspx")
+
+        If ToString.IsNullOrEmpty(TextBoxCodigo.Text) Or ToString.IsNullOrEmpty(TextBoxPass.Text) Or ToString.IsNullOrEmpty(TextBoxPass2.Text) Then
+            LabelError.Text = "Rellene todos los datos"
+        Else
+            If TextBoxCodigo.Text.Equals(cod) Then
+                If TextBoxPass.Text.Equals(TextBoxPass2.Text) Then
+                    Dim st2 = "UPDATE Usuarios SET pass = '" & TextBoxPass.Text & "' WHERE email = '" & TextBoxEmail.Text & "'"
+                    Dim bool = updateDatos(st2)
+                    If (bool) Then
+                        Response.Redirect("http://hads18-24.azurewebsites.net/inicio.aspx")
+                    Else
+                        LabelError.Text = "No se ha podido actualizar las contraeña"
+                    End If
                 Else
-                    LabelError.Text = "No se ha podido actualizar las contraeña"
+                    LabelError.Text = "Las contraseñas no coinciden"
                 End If
             Else
-                LabelError.Text = "Las contraseñas no coinciden"
+                LabelError.Text = "El codigo es incorrecto"
             End If
-        Else
-            LabelError.Text = "El codigo es incorrecto"
         End If
-
     End Sub
 End Class

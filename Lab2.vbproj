@@ -99,6 +99,12 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="alumno.aspx" />
+    <Content Include="insertarTarea.aspx" />
+    <Content Include="instanciarTarea.aspx" />
+    <Content Include="profesor.aspx" />
+    <Content Include="tareasAlumno.aspx" />
+    <Content Include="tareasProfesor.aspx" />
     <Content Include="Web.config" />
     <Content Include="registro.aspx" />
     <Content Include="cambiarPassword.aspx" />
@@ -106,6 +112,27 @@
     <Content Include="confirmar.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="alumno.aspx.designer.vb">
+      <DependentUpon>alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="alumno.aspx.vb">
+      <DependentUpon>alumno.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="insertarTarea.aspx.designer.vb">
+      <DependentUpon>insertarTarea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insertarTarea.aspx.vb">
+      <DependentUpon>insertarTarea.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="instanciarTarea.aspx.designer.vb">
+      <DependentUpon>instanciarTarea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="instanciarTarea.aspx.vb">
+      <DependentUpon>instanciarTarea.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -124,6 +151,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="profesor.aspx.designer.vb">
+      <DependentUpon>profesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="profesor.aspx.vb">
+      <DependentUpon>profesor.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="registro.aspx.designer.vb">
       <DependentUpon>registro.aspx</DependentUpon>
@@ -151,6 +185,20 @@
     </Compile>
     <Compile Include="confirmar.aspx.vb">
       <DependentUpon>confirmar.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="tareasAlumno.aspx.designer.vb">
+      <DependentUpon>tareasAlumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tareasAlumno.aspx.vb">
+      <DependentUpon>tareasAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="tareasProfesor.aspx.designer.vb">
+      <DependentUpon>tareasProfesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tareasProfesor.aspx.vb">
+      <DependentUpon>tareasProfesor.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
