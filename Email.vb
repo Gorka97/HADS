@@ -44,7 +44,7 @@ Public Class Email
             'Direccion de destino
             Dim to_address As New MailAddress(Email)
             'Password de la cuenta
-            Dim from_pass As String = "******"
+            Dim from_pass As String = "*******"
             'Objeto para el cliente smtp
             Dim smtp As New SmtpClient
             'Host en este caso el servidor de gmail
