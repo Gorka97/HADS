@@ -19,4 +19,8 @@ Public Class tareasProfesor
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Response.Redirect("insertarTarea.aspx")
     End Sub
+
+    Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList1.SelectedIndexChanged
+
+    End Sub
 End Class

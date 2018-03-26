@@ -23,6 +23,13 @@
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="tareasProfesor.aspx">Tareas</asp:HyperLink>
             <br />
             <br />
+            <br />
+            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="importarTareas.aspx">Importar tareas</asp:HyperLink>
+            <br />
+            <br />
+            <br />
+            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="exportarTareas.aspx">Exportar tareas</asp:HyperLink>
+            <br />
         </div>
     </form>
 </body>

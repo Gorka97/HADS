@@ -1,0 +1,51 @@
+<?xml version="1.0" standalone="yes"?>
+<tareas>
+  <tarea codigo="EDA07-Ej1">
+    <descripcion>Ejercicio sobre listas ligadas</descripcion>
+    <hestimadas>3</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Ejercicio</tipotarea>
+  </tarea>
+  <tarea codigo="EDA13">
+    <descripcion>examen</descripcion>
+    <hestimadas>12</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Examen</tipotarea>
+  </tarea>
+  <tarea codigo="eda18">
+    <descripcion>asdfd</descripcion>
+    <hestimadas>32</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Trabajo</tipotarea>
+  </tarea>
+  <tarea codigo="EDA23">
+    <descripcion>examen</descripcion>
+    <hestimadas>1</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Examen</tipotarea>
+  </tarea>
+  <tarea codigo="EDA45">
+    <descripcion>dsafsd</descripcion>
+    <hestimadas>3</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Examen</tipotarea>
+  </tarea>
+  <tarea codigo="eda89">
+    <descripcion>asdassda</descripcion>
+    <hestimadas>2</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Ejercicio</tipotarea>
+  </tarea>
+  <tarea codigo="EX-123">
+    <descripcion>examen</descripcion>
+    <hestimadas>3</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Examen</tipotarea>
+  </tarea>
+  <tarea codigo="qqqq">
+    <descripcion>qqqq</descripcion>
+    <hestimadas>12</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Ejercicio</tipotarea>
+  </tarea>
+</tareas>
