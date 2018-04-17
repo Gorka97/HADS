@@ -33,10 +33,11 @@ Public Class WebForm1
 
     Protected Function encriptar(ByVal pass)
 
-        Dim has As New OC.Core.Crypto.Hash
-        Dim texto As String = pass.ToString
-        Dim passFinal As String = has.Sha256(texto).ToLower
-        Return passFinal
+        Dim uEncode As New UnicodeEncoding()
+        Dim bytClearString() As Byte = uEncode.GetBytes(pass)
+        Dim sha As New SHA256Managed()
+        Dim hash() As Byte = sha.ComputeHash(bytClearString)
+        Return Convert.ToBase64String(hash)
 
     End Function
 
