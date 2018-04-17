@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Security.Cryptography
 Imports BaseDeDatos.accesodatosSQL
 Public Class WebForm3
     Inherits System.Web.UI.Page
@@ -17,7 +18,9 @@ Public Class WebForm3
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
         Dim c As Boolean = False
-        Dim st = "SELECT tipo FROM Usuarios WHERE email='" & TextBoxEmail.Text & "' AND pass='" & TextBoxPass.Text & "' "
+        Dim pass = encriptar(TextBoxPass.Text)
+        LabelConexion.Text = pass.ToString
+        Dim st = "SELECT * FROM Usuarios WHERE email='" & TextBoxEmail.Text & "'"
         Dim RS As SqlDataReader
         Try
             RS = getDatos(st)
@@ -29,14 +32,36 @@ Public Class WebForm3
         If Not (c) Then
             RS.Read()
             Dim tipo As String = RS.Item("tipo")
+            Dim password As String = RS.Item("pass")
             RS.Close()
-            If (tipo = "Alumno") Then
-                Session("email") = TextBoxEmail.Text
-                Response.Redirect("alumno.aspx")
-            Else
-                Session("email") = TextBoxEmail.Text
-                Response.Redirect("profesor.aspx")
+            If (password.Equals(pass.ToString)) Then
+                If (TextBoxEmail.Text.Equals("vadillo@ehu.es")) Then
+                    Session("email") = TextBoxEmail.Text
+                    FormsAuthentication.SetAuthCookie("vadillo", True)
+                    Response.Redirect("/Acceso/Profesores/profesor.aspx")
+                ElseIf (TextBoxEmail.Text.Equals("admin@ehu.es")) Then
+                    Session("email") = TextBoxEmail.Text
+                    FormsAuthentication.SetAuthCookie("admin", True)
+                    Response.Redirect("/Acceso/Admin/.aspx")
+                ElseIf (tipo = "Alumno") Then
+                    Session("email") = TextBoxEmail.Text
+                    FormsAuthentication.SetAuthCookie("alumno", True)
+                    Response.Redirect("/Acceso/Alumnos/alumno.aspx")
+                Else
+                    Session("email") = TextBoxEmail.Text
+                    FormsAuthentication.SetAuthCookie("profesor", True)
+                    Response.Redirect("/Acceso/Profesores/profesor.aspx")
+                End If
             End If
         End If
     End Sub
+
+    Protected Function encriptar(ByVal pass)
+
+        Dim has As New OC.Core.Crypto.Hash
+        Dim texto As String = pass.ToString
+        Dim passFinal As String = has.Sha256(texto).ToLower
+        Return passFinal
+
+    End Function
 End Class

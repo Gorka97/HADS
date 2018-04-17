@@ -1,8 +1,10 @@
 ﻿Imports BaseDeDatos.accesodatosSQL
 Imports BaseDeDatos.Email
+Imports System.Security.Cryptography
 
 Public Class WebForm1
     Inherits System.Web.UI.Page
+
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         conectar()
@@ -13,7 +15,8 @@ Public Class WebForm1
         If TextBoxPass.Text.Equals(TextBoxPass2.Text) Then
             Randomize()
             Dim NumConf = CLng(Rnd() * 9000000) + 1000000
-            Dim insercion = insertar(TextBoxEmail.Text, TextBoxNombre.Text, TextBoxApellido.Text, TextBoxPass.Text, DropDownListRol.SelectedValue, NumConf)
+            Dim pass = encriptar(TextBoxPass.Text)
+            Dim insercion = insertar(TextBoxEmail.Text, TextBoxNombre.Text, TextBoxApellido.Text, pass, DropDownListRol.SelectedValue, NumConf)
             If insercion Then
                 LabelRegistro.Text = "En breves instantes recibirá un email para confirmar su registro. Puede cerrar esta pagina."
                 Dim envio As New BaseDeDatos.Email
@@ -28,5 +31,13 @@ Public Class WebForm1
         cerrarconexion()
     End Sub
 
+    Protected Function encriptar(ByVal pass)
+
+        Dim has As New OC.Core.Crypto.Hash
+        Dim texto As String = pass.ToString
+        Dim passFinal As String = has.Sha256(texto).ToLower
+        Return passFinal
+
+    End Function
 
 End Class
