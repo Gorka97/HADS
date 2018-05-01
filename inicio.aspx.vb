@@ -37,18 +37,46 @@ Public Class WebForm3
             If (password.Equals(pass.ToString)) Then
                 If (TextBoxEmail.Text.Equals("vadillo@ehu.es")) Then
                     Session("email") = TextBoxEmail.Text
+                    Session("tipo") = "P"
+                    Dim arrayPr As ArrayList
+                    Application.Lock()
+                    arrayPr = Application.Contents("Profesores")
+                    arrayPr.Add(TextBoxEmail.Text)
+                    Application.Contents("Profesores") = arrayPr
+                    Application.UnLock()
                     FormsAuthentication.SetAuthCookie("vadillo", True)
                     Response.Redirect("/Acceso/Profesores/profesor.aspx")
                 ElseIf (TextBoxEmail.Text.Equals("admin@ehu.es")) Then
                     Session("email") = TextBoxEmail.Text
+                    Session("tipo") = "P"
+                    Dim arrayPr As ArrayList
+                    Application.Lock()
+                    arrayPr = Application.Contents("Profesores")
+                    arrayPr.Add(TextBoxEmail.Text)
+                    Application.Contents("Profesores") = arrayPr
+                    Application.UnLock()
                     FormsAuthentication.SetAuthCookie("admin", True)
                     Response.Redirect("/Acceso/Admin/.aspx")
                 ElseIf (tipo = "Alumno") Then
                     Session("email") = TextBoxEmail.Text
+                    Session("tipo") = "A"
+                    Dim arrayAl As ArrayList
+                    Application.Lock()
+                    arrayAl = Application.Contents("Alumnos")
+                    arrayAl.Add(TextBoxEmail.Text)
+                    Application.Contents("Alumnos") = arrayAl
+                    Application.UnLock()
                     FormsAuthentication.SetAuthCookie("alumno", True)
                     Response.Redirect("/Acceso/Alumnos/alumno.aspx")
                 Else
                     Session("email") = TextBoxEmail.Text
+                    Session("tipo") = "P"
+                    Dim arrayPr As ArrayList
+                    Application.Lock()
+                    arrayPr = Application.Contents("Profesores")
+                    arrayPr.Add(TextBoxEmail.Text)
+                    Application.Contents("Profesores") = arrayPr
+                    Application.UnLock()
                     FormsAuthentication.SetAuthCookie("profesor", True)
                     Response.Redirect("/Acceso/Profesores/profesor.aspx")
                 End If

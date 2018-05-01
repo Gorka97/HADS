@@ -12,18 +12,23 @@ Public Class WebForm1
 
     Protected Sub ButtonRegistrar_Click(sender As Object, e As EventArgs) Handles ButtonRegistrar.Click
 
-        If TextBoxPass.Text.Equals(TextBoxPass2.Text) Then
-            Randomize()
-            Dim NumConf = CLng(Rnd() * 9000000) + 1000000
-            Dim pass = encriptar(TextBoxPass.Text)
-            Dim insercion = insertar(TextBoxEmail.Text, TextBoxNombre.Text, TextBoxApellido.Text, pass, DropDownListRol.SelectedValue, NumConf)
-            If insercion Then
-                LabelRegistro.Text = "En breves instantes recibirá un email para confirmar su registro. Puede cerrar esta pagina."
-                Dim envio As New BaseDeDatos.Email
-                LabelEmailEnviado.Text = envio.EnviarEmailConfirmacion(NumConf, TextBoxEmail.Text)
+        Dim m As New Matricula.Matriculas
+        If (m.comprobar(TextBoxEmail.Text) = "SI") Then
+            If TextBoxPass.Text.Equals(TextBoxPass2.Text) Then
+                Randomize()
+                Dim NumConf = CLng(Rnd() * 9000000) + 1000000
+                Dim pass = encriptar(TextBoxPass.Text)
+                Dim insercion = insertar(TextBoxEmail.Text, TextBoxNombre.Text, TextBoxApellido.Text, pass, DropDownListRol.SelectedValue, NumConf)
+                If insercion Then
+                    LabelRegistro.Text = "En breves instantes recibirá un email para confirmar su registro. Puede cerrar esta pagina."
+                    Dim envio As New BaseDeDatos.Email
+                    LabelEmailEnviado.Text = envio.EnviarEmailConfirmacion(NumConf, TextBoxEmail.Text)
+                End If
+            Else
+                LabelRegistro.Text = "Las contraseñas no coinciden"
             End If
         Else
-            LabelRegistro.Text = "Las contraseñas no coinciden"
+            LabelRegistro.Text = "No estas matriculad@"
         End If
     End Sub
 
